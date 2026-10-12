@@ -1,135 +1,58 @@
-# Aprendiendo PHP desde cero 🐘
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-> Repositorio de aprendizaje: **PHP moderno (8.x)** + una app de ejemplo en **Laravel**.
-> Todo el **código está en inglés** (como en la vida real) y **los comentarios y esta documentación están en español**.
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
----
+## About Laravel
 
-## ¿Qué es este repo?
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-Es un conjunto de **ejemplos sueltos y diminutos**, uno por concepto. Cada archivo hace **una sola cosa** y se puede ejecutar por separado. No hay que instalar nada raro: basta con tener PHP en la terminal.
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Además, dentro de `task-list/` hay una aplicación **Laravel** completa (framework profesional que usan empresas reales) para que veas a dónde lleva todo esto.
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
----
+## Learning Laravel
 
-## Requisitos previos
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-1. **PHP 8.1 o superior** instalado y agregado al `PATH` (para poder escribir `php` en la terminal).
-2. Un editor de código (recomendado: [VS Code](https://code.visualstudio.com/)).
-3. (Opcional) **Composer** para la parte de Laravel.
+In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-Comprueba que todo está bien con:
+You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
 
-```bash
-php -v
-```
+## Agentic Development
 
-Si te sale algo como `PHP 8.x.x`, estás listo. Si no, mira la guía: [docs/00-como-ejecutar.md](docs/00-como-ejecutar.md).
-
----
-
-## 🗺️ Ruta de aprendizaje (sigue este orden)
-
-No leas los archivos en orden alfabético: sigue este camino. Cada paso supone el anterior.
-
-| # | Paso | Documentación | Archivos de práctica |
-|---|------|---------------|----------------------|
-| 0 | Instalar PHP y ejecutar scripts | [docs/00-como-ejecutar.md](docs/00-como-ejecutar.md) | — |
-| 1 | Sintaxis, variables y tipos de datos | [docs/01-sintaxis-y-tipos.md](docs/01-sintaxis-y-tipos.md) | `expressions.php`, `data-types.php` |
-| 2 | Cadenas de texto (strings) | [docs/02-strings.md](docs/02-strings.md) | `strings.php`, `string_accessing_manipulation.php`, `formatting_strings.php`, `advanced_strings_encoding.php`, `searching_regex.php` |
-| 3 | Números | [docs/03-numeros.md](docs/03-numeros.md) | `numbers_*.php`, `min_max.php`, `random_numbers.php` |
-| 4 | Condicionales y bucles | [docs/04-control-de-flujo.md](docs/04-control-de-flujo.md) | `conditionals.php`, `switch.php`, `match-expression.php`, `while-loop.php`, `foreach-loop.php`, `guess-secret-game.php` |
-| 5 | Arrays (listas y diccionarios) | [docs/05-arrays.md](docs/05-arrays.md) | `arrays/` |
-| 6 | Funciones | [docs/06-funciones.md](docs/06-funciones.md) | `functions/` |
-| 7 | Programación orientada a objetos (clases) | [docs/07-poo.md](docs/07-poo.md) | `classes/` |
-| 8 | Tu primera app con Laravel | [docs/08-laravel.md](docs/08-laravel.md) | `task-list/` |
-
----
-
-## 📂 Estructura del repositorio
-
-```
-php-laravel/
-│
-├── README.md                     ← estás aquí
-├── docs/                         ← documentación explicada paso a paso
-│
-├── expressions.php               ← variables, operadores, concatenación
-├── data-types.php                ← string, int, float, bool, array, null, object
-│
-├── strings.php                   ← comillas simples/dobles, heredoc/nowdoc
-├── string_accessing_manipulation.php  ← acceder, cortar, buscar, reemplazar
-├── formatting_strings.php        ← printf, sprintf, fechas, JSON
-├── advanced_strings_encoding.php ← base64, URL encode, escapar HTML (XSS)
-├── searching_regex.php           ← buscar con strpos y expresiones regulares
-│
-├── numbers_integer_float.php     ← enteros y decimales
-├── numbers_functions.php         ← abs, round, floor, ceil
-├── numbers_formatting.php        ← number_format
-├── numbers_combined.php          ← ejemplo real con precios
-├── min_max.php                   ← mínimo y máximo
-├── random_numbers.php            ← números aleatorios
-│
-├── conditionals.php              ← if, else, ternario, ??, ??=
-├── switch.php                    ← switch clásico
-├── match-expression.php          ← match de PHP 8
-├── while-loop.php                ← while, do-while, break, continue
-├── foreach-loop.php              ← recorrer arrays (carrito de compras)
-├── guess-secret-game.php         ← mini juego interactivo por consola
-│
-├── arrays/                       ← 16 archivos sobre arrays
-├── functions/                    ← 20 archivos sobre funciones
-├── classes/                      ← 15 archivos sobre POO (+ main.php)
-│       └── README.md
-│
-└── task-list/                    ← app Laravel de ejemplo
-```
-
----
-
-## ▶️ Cómo ejecutar cualquier archivo
-
-Desde la raíz del repo:
+Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
 
 ```bash
-php data-types.php
-php arrays/arrays_indexed.php
-php functions/recursion.php
-php classes/main.php          # ejecuta todos los ejemplos de clases
+composer require laravel/boost --dev
+
+php artisan boost:install
 ```
 
-El juego interactivo (escribe y responde en la terminal):
+Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
 
-```bash
-php guess-secret-game.php
-```
+## Contributing
 
----
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## 💡 Consejos de quien ya ha recorrido este camino
+## Code of Conduct
 
-1. **Ejecuta, rompe, corrige.** No leas pasivamente: cambia un valor, guarda y vuelve a ejecutar.
-2. **Un archivo = un concepto.** Si no entiendes uno, léelo con la documentación al lado.
-3. **Usa `var_dump()` y `print_r()`** para "espiar" qué hay dentro de una variable. Es tu mejor amigo al principio.
-4. **El error es información.** PHP te dice archivo y línea: úsala.
-5. **Cuando termines la ruta**, pasa al [docs/08-laravel.md](docs/08-laravel.md).
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
----
+## Security Vulnerabilities
 
-## 📖 Temas de la sección
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-En esta sección sentaremos las bases para trabajar con PHP moderno en el desarrollo backend.
-Exploraremos la configuración para uso en la terminal, las estructuras fundamentales del lenguaje, incluyendo buenas prácticas y ejemplos claros para comenzar a programar de forma profesional.
+## License
 
-Aquí veremos:
-
-- ¿Qué es PHP?
-- Configurar PHP en tu sistema (agregar al PATH).
-- Sintaxis básica y comentarios.
-- Variables y tipos de datos.
-- Strings y concatenación.
-- Tipado estricto con `declare(strict_types=1)`.
-- Operadores en PHP y su uso en ejemplos prácticos.
-
-Esta sección es esencial para comprender el lenguaje desde cero y dominar los fundamentos necesarios para construir aplicaciones robustas y limpias con PHP moderno.
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
