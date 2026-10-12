@@ -19,6 +19,7 @@ Sigue estos archivos en orden:
 | 4 | [Modelos y Eloquent](04-modelos-eloquent.md) | El ORM de Laravel y cómo se habla con la base de datos |
 | 5 | [Middleware](05-middleware.md) | Las "capas" que revisan cada petición antes de llegar a tu código |
 | 6 | [Sección Género — CRUD API](06-genero-api.md) | 👉 **Manos a la obra:** crea tu primer recurso completo (Genre) con validación, resources y tests |
+| 7 | [Repository Pattern y Testing](07-repository-pattern.md) | Refactoriza con **Repository Pattern** (interfaces, providers) y deja la API **bien testeada** con factories y Pest |
 
 ## 🚀 Ejecutar este proyecto
 

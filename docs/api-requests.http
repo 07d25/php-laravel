@@ -1,0 +1,81 @@
+###
+# docs/api-requests.http — Requests de prueba para la MovieAPI
+#
+# Cómo usarlo (VS Code con la extensión "REST Client", o PhpStorm):
+#   1. Arranca el servidor:  php artisan serve   →  http://localhost:8000
+#   2. Abre este archivo y pulsa "Send Request" sobre cada bloque (###).
+#
+# Nota: las rutas de API llevan el prefijo /api/v1 (definido en
+# bootstrap/app.php con apiPrefix: "api/v1").
+###
+
+# URL base del servidor local (php artisan serve)
+@baseUrl = http://localhost:8000/api/v1
+# Id del género sobre el que prueban show/update/delete (cambien si quieren)
+@genreId = 1
+
+### -----------------------------------------------------------
+### Health check (comprueba que la API está viva)
+### -----------------------------------------------------------
+GET {{baseUrl}}/health
+Accept: application/json
+
+### -----------------------------------------------------------
+### Listar todos los géneros  →  GET /api/v1/genres
+### -----------------------------------------------------------
+GET {{baseUrl}}/genres
+Accept: application/json
+
+### -----------------------------------------------------------
+### Crear un género  →  POST /api/v1/genres
+### El "slug" se genera solo a partir del "name".
+### -----------------------------------------------------------
+POST {{baseUrl}}/genres
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Suspenso",
+  "description": "Películas con tensión y giros inesperados.",
+  "is_active": true
+}
+
+### -----------------------------------------------------------
+### Crear un género INVÁLIDO (para ver la validación en acción)
+### Esperado: HTTP 422 con los errores de "name".
+### -----------------------------------------------------------
+POST {{baseUrl}}/genres
+Content-Type: application/json
+Accept: application/json
+
+{
+  "description": "Falta el name obligatorio.",
+  "is_active": true
+}
+
+### -----------------------------------------------------------
+### Ver un género por id  →  GET /api/v1/genres/{genre}
+### -----------------------------------------------------------
+GET {{baseUrl}}/genres/{{genreId}}
+Accept: application/json
+
+### -----------------------------------------------------------
+### Actualizar un género  →  PUT /api/v1/genres/{genre}
+### Al cambiar el "name", el "slug" se regenera automáticamente.
+### -----------------------------------------------------------
+PUT {{baseUrl}}/genres/{{genreId}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "Suspenso Psicológico",
+  "description": "Tensión mental y giros de trama.",
+  "is_active": true
+}
+
+### -----------------------------------------------------------
+### Borrar un género (soft delete)  →  DELETE /api/v1/genres/{genre}
+### No borra de verdad: solo marca "deleted_at" en la BD.
+### -----------------------------------------------------------
+DELETE {{baseUrl}}/genres/{{genreId}}
+Accept: application/json
