@@ -18,6 +18,7 @@ Sigue estos archivos en orden:
 | 3 | [Rutas](03-rutas.md) | Cómo se mapea una URL a una acción |
 | 4 | [Modelos y Eloquent](04-modelos-eloquent.md) | El ORM de Laravel y cómo se habla con la base de datos |
 | 5 | [Middleware](05-middleware.md) | Las "capas" que revisan cada petición antes de llegar a tu código |
+| 6 | [Sección Género — CRUD API](06-genero-api.md) | 👉 **Manos a la obra:** crea tu primer recurso completo (Genre) con validación, resources y tests |
 
 ## 🚀 Ejecutar este proyecto
 
