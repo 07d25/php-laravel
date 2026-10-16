@@ -2,6 +2,9 @@
 
 namespace App\Repositories\Contracts;
 
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
+
 /**
  * CONTRATO específico del recurso Género.
  *
@@ -19,4 +22,10 @@ interface GenreRepositoryInterface extends BaseRepositoryInterface
     // Ejemplo de lo que podría añadirse en el futuro:
     // public function findBySlug(string $slug): ?Genre;
     //
+
+    public function filter(array $filter, string $sortBy = 'name', string $order = 'asc'): Collection;
+
+    public function findBySlugOrFail(string $slug): Model;
+
+    public function restore(int $id): Model;
 }

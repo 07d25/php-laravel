@@ -8,6 +8,8 @@ use App\Http\Resources\GenreResource;
 use App\Models\Genre;
 use App\Repositories\Contracts\GenreRepositoryInterface;
 use App\Traits\ApiResponse;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request as HttpRequest;
 
 /**
  * CONTROLADOR del recurso Género (refactorizado con Repository Pattern).
@@ -37,12 +39,22 @@ class GenreController extends Controller
      *
      * GET /api/v1/genres → lista todos los géneros.
      */
-    public function index()
+    public function index(HttpRequest $request)
     {
-        // Delega al repositorio el traer todo; aquí solo formateamos la respuesta.
-        $genres = $this->genres->all();
+        $genres = $this->genres->filter(
+            filters: $request->only(['search', 'is_active']),
+            sortBy: $request->input('sort_by', 'name'),
+            order: $request->input('order', 'asc'),
+        );
 
         return $this->successResponse(GenreResource::collection($genres));
+    }
+
+    public function showBySlug(string $slug): JsonResponse
+    {
+        $genre = $this->genres->findBySlugOrFail($slug);
+
+        return $this->successResponse(new GenreResource($genre));
     }
 
     /**
@@ -94,5 +106,12 @@ class GenreController extends Controller
         $this->genres->delete($genre);
 
         return $this->successResponse(null, 'Género eliminado exitosamente.');
+    }
+
+    public function restore(int $id): JsonResponse
+    {
+        $this->genres->restore($id);
+
+        return $this->successResponse(null, 'Género restaurado exitosamente.');
     }
 }

@@ -11,8 +11,10 @@
 
 # URL base del servidor local (php artisan serve)
 @baseUrl = http://localhost:8000/api/v1
-# Id del género sobre el que prueban show/update/delete (cambien si quieren)
+# Id del género sobre el que prueban show/update/delete/restore (cambien si quieren)
 @genreId = 1
+# Slug del género para probar la búsqueda por slug (cambien si quieren)
+@slug = accion
 
 ### -----------------------------------------------------------
 ### Health check (comprueba que la API está viva)
@@ -78,4 +80,48 @@ Accept: application/json
 ### No borra de verdad: solo marca "deleted_at" en la BD.
 ### -----------------------------------------------------------
 DELETE {{baseUrl}}/genres/{{genreId}}
+Accept: application/json
+
+### -----------------------------------------------------------
+### Filtrar por texto  →  GET /api/v1/genres?search=...
+### Busca coincidencias parciales en el "name" (sin distinguir mayúsculas).
+### -----------------------------------------------------------
+GET {{baseUrl}}/genres?search=acci
+Accept: application/json
+
+### -----------------------------------------------------------
+### Filtrar por estado  →  GET /api/v1/genres?is_active=...
+### Valores esperados: true | false
+### -----------------------------------------------------------
+GET {{baseUrl}}/genres?is_active=true
+Accept: application/json
+
+### -----------------------------------------------------------
+### Filtrar combinando búsqueda y estado
+### -----------------------------------------------------------
+GET {{baseUrl}}/genres?search=acci&is_active=true
+Accept: application/json
+
+### -----------------------------------------------------------
+### Ordenar  →  GET /api/v1/genres?sort_by=name&order=desc
+### "sort_by" permite: name | created_at | is_active
+### "order" permite: asc | desc
+### (valores inválidos caen por defecto a name / asc)
+### -----------------------------------------------------------
+GET {{baseUrl}}/genres?sort_by=name&order=desc
+Accept: application/json
+
+### -----------------------------------------------------------
+### Ver un género por slug  →  GET /api/v1/genres/slug/{slug}
+### El slug se genera automáticamente desde el "name".
+### -----------------------------------------------------------
+GET {{baseUrl}}/genres/slug/{{slug}}
+Accept: application/json
+
+### -----------------------------------------------------------
+### Restaurar un género borrado  →  POST /api/v1/genres/{id}/restore
+### Requiere que el género esté borrado (soft delete) de antes.
+### Ejecuta primero el DELETE de arriba y luego este bloque.
+### -----------------------------------------------------------
+POST {{baseUrl}}/genres/{{genreId}}/restore
 Accept: application/json
